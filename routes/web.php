@@ -1,14 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/helo', function(){
+// Hello World
+Route::get('/hello', function () {
     return "Hello World";
 });
 
-use App\Http\Controllers\UserController;
+// Home
+Route::get('/', function () {
+    return 'Selamat Datang di Laravel';
+});
+
+// User
 Route::get('/user', [UserController::class, 'index']);
+
+// Products
+Route::get('/products', [ProductController::class, 'index']);
+
+// Mahasiswa 
+use App\Http\Controllers\MahasiswaController;
+Route::resource('mahasiswa', MahasiswaController::class);
